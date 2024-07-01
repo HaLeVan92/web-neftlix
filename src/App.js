@@ -1,12 +1,22 @@
 import React from 'react'
 import './App.css';
 import Header from './components/Header';
-import HomeBanner from './components/HomeBanner';
+import Main from './components/Main';
+import List from './components/List';
+import Footer from './components/Footer';
+
+
 function App() {
   return (
     <React.Fragment >
       <Header/>
-      <HomeBanner/>
+      <Main/>
+      <List/>
+      <List/>
+      <List/>
+      <List/>
+      <List/>
+      <Footer/>
     </React.Fragment>
   );
 }
