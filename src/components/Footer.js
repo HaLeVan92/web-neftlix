@@ -12,21 +12,21 @@ function Footer() {
             </div>
             <div className='footer-content-menus'>
                 <div className='footer-menu'>
-                    <p href='/'>Home</p>
-                    <p href='/'>Contact us</p>
-                    <p href='/'>Term of servieces</p>
-                    <p href='/'>About us</p>
+                    <a className='textMenu' href='/'>Home</a>
+                    <a className='textMenu' href='/'>Contact us</a>
+                    <a className='textMenu' href='/'>Term of servieces</a>
+                    <a className='textMenu' href='/'>About us</a>
                 </div>
                 <div className='footer-menu'>
-                    <p href='/'>Live</p>
-                    <p href='/'>FAQ</p>
-                    <p href='/'>Premium</p>
-                    <p href='/'>Privacy policy</p>
+                    <a className='textMenu' href='/'>Live</a>
+                    <a className='textMenu' href='/'>FAQ</a>
+                    <a className='textMenu' href='/'>Premium</a>
+                    <a className='textMenu' href='/'>Privacy policy</a>
                 </div>
                 <div className='footer-menu'>
-                    <p className='textMenu' href='/'>Must watch</p>
-                    <p href='/'>Recent release</p>
-                    <p href='/'>Top IMDB</p>
+                    <a className='textMenu' href='/'>Must watch</a>
+                    <a className='textMenu' href='/'>Recent release</a>
+                    <a className='textMenu' href='/'>Top IMDB</a>
                     
                 </div>
             </div>
@@ -39,5 +39,5 @@ function Footer() {
   )
 }
 
-export default Footer
+export default Footer;
 

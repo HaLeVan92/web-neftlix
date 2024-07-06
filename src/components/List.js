@@ -1,50 +1,47 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import apiService from '../app/apiService';
+import { API_KEY } from '../app/config';
 
-function List() {
+
+
+function List({dataMovie, title}) {
+    const [movies, setMovies] = useState();
+    
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await apiService.get(`/movie/${dataMovie}?api_key=${API_KEY}`);
+            
+            setMovies(data.data.results);
+        }
+        fetchData();
+    // eslint-disable-next-line    
+    }, [])
+
+    console.log(movies);
+
   return (
     <div className='list'>
-        <h2 className='text-genres'>Netflix</h2>
+        <h2 className='text-genres'>{title}</h2>
         <div className='row'>
             <div className='listMovies'>
-                <div className='movie'>
-                    <img src='https://mcdn.coolmate.me/image/April2022/series-phim-hay-tren-netflix_391.jpg' alt='Movie 1' width='360' height='500'/>
-                    <h3 className='moviesName'>Movie 1</h3>
-                </div>
-                <div className='movie'>
-                    <img src='https://www.elle.vn/wp-content/uploads/2021/12/13/460451/phim-giang-sinh-netflix-a-boy-called-christmas-750x1100-1.jpg' alt='Movie 2' width='360' height='500'/>
-                    <h3 className='moviesName'>Movie 2</h3>
-                </div>
-                <div className='movie'>
-                    <img src='https://www.elle.vn/wp-content/uploads/2021/09/29/450823/phim-han-sweet-home.jpg' alt='Movie 3' width='360' height='500'/>
-                    <h3 className='moviesName'>Movie 3</h3>
-                </div>
-                <div className='movie'>
-                    <img src='https://cdn.nguyenkimmall.com/images/companies/_1/Tin_tuc/phim-kinh-di-netflix-5.jpg' alt='Movie 4' width='360' height='500'/>
-                    <h3 className='moviesName'>Movie 4</h3>
-                </div>
-                <div className='movie'>
-                    <img src='https://mcdn.coolmate.me/image/April2022/series-phim-hay-tren-netflix_391.jpg' alt='Movie 1' width='360' height='500'/>
-                    <h3 className='moviesName'>Movie 1</h3>
-                </div>
-                <div className='movie'>
-                    <img src='https://www.elle.vn/wp-content/uploads/2021/12/13/460451/phim-giang-sinh-netflix-a-boy-called-christmas-750x1100-1.jpg' alt='Movie 2' width='360' height='500'/>
-                    <h3 className='moviesName'>Movie 2</h3>
-                </div>
-                <div className='movie'>
-                    <img src='https://www.elle.vn/wp-content/uploads/2021/09/29/450823/phim-han-sweet-home.jpg' alt='Movie 3' width='360' height='500'/>
-                    <h3 className='moviesName'>Movie 3</h3>
-                </div>
-                <div className='movie'>
-                    <img src='https://cdn.nguyenkimmall.com/images/companies/_1/Tin_tuc/phim-kinh-di-netflix-5.jpg' alt='Movie 4' width='360' height='500'/>
-                    <h3 className='moviesName'>Movie 4</h3>
-                </div>
+                {movies?.map((movie) => (
+                    
+                    <div className='movie' onClick={() => navigate(`/detail/${movie.id}`)}>
+                        <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt='Movie 1' width='360' height='500'/>                       
+                        <h3 className='moviesName'>{`${movie.title}`}</h3>
+                    </div>
+                    
+                ))}
+                
             </div>
             <div className='btnLeft'>
-              <FontAwesomeIcon icon="fa-solid fa-arrow-left"/>              
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 256A256 256 0 1 0 0 256a256 256 0 1 0 512 0zM271 135c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-87 87 87 87c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L167 273c-9.4-9.4-9.4-24.6 0-33.9L271 135z"/></svg>             
             </div>
             <div className='btnRight'>
-              <FontAwesomeIcon icon="fa-solid fa-arrow-right" />     
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM241 377c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l87-87-87-87c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L345 239c9.4 9.4 9.4 24.6 0 33.9L241 377z"/></svg>    
             </div>
         </div>
     </div>

@@ -1,42 +1,27 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import Header from './components/Header';
-import Main from './components/Main';
-import List from './components/List';
-import Footer from './components/Footer';
-import apiService from './app/apiService';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import MainLayout from './layout/MainLayout';
+import HomePage from './pages/HomePage';
+import DetailPage from './pages/DetailPage';
 
 
 
 
 function App() {
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await apiService.post('/api/register', {
-          "email": "eve.holt@reqres.in",
-          "password": "pistol"
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();   
-  }, []);
+
 
 
   return (
-    
-    <React.Fragment >
-      <Header/>
-      <Main/>
-      <List/>
-      <List/>
-      <List/>
-      <List/>
-      <List/>
-      <Footer/>
-    </React.Fragment>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout/>}>
+          <Route path='/' element={<HomePage/>} />
+        </Route>
+
+        <Route path='/detail/:id' element={<DetailPage/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
