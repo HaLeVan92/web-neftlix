@@ -1,11 +1,23 @@
 import React from 'react'
 import Button from '@mui/material/Button';
 import SearchMovies from '../pages/SearchMovies';
+// import { convertLength } from '@mui/material/styles/cssUtils';
+// import { MediaBluetoothOnTwoTone } from '@mui/icons-material';
 
 
-const Header = () => {
+const Header = (on) => {
 
 
+
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const data = await apiService.get(`/movie/${dataMovie}?api_key=${API_KEY}`);
+            
+    //         setMovies(data.data.results);
+    //     }
+    //     fetchData();
+    // // eslint-disable-next-line    
+    // }, [])
     return(
         <header className="topNav">
             <nav className="navbar navbar-expand-md navbar-dark">

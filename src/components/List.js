@@ -2,8 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import apiService from '../app/apiService';
 import { API_KEY } from '../app/config';
+// import Carousel from "react-multi-carousel";
+// import "react-multi-carousel/lib/styles.css";
 
-
+const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1200 },
+      items: 3
+    },
+    tablet: {
+      breakpoint: { max: 1200, min: 600 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 600, min: 0 },
+      items: 1
+    }
+  };
 
 function List({dataMovie, title}) {
     const [movies, setMovies] = useState();
@@ -26,6 +45,16 @@ function List({dataMovie, title}) {
     <div className='list'>
         <h2 className='text-genres'>{title}</h2>
         <div className='row'>
+           {/* <Carousel responsive={responsive} className='listMovies'>
+           {movies.length > 0 && movies?.map((movie) => (
+                    
+                    <div className='movie' onClick={() => navigate(`/detail/${movie.id}`)}>
+                        <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt='Movie 1' width='360' height='500'/>                       
+                        <h3 className='moviesName'>{`${movie.title}`}</h3>
+                    </div>
+                    
+                ))}
+            </Carousel>; */}
             <div className='listMovies'>
                 {movies?.map((movie) => (
                     
@@ -37,12 +66,7 @@ function List({dataMovie, title}) {
                 ))}
                 
             </div>
-            <div className='btnLeft'>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 256A256 256 0 1 0 0 256a256 256 0 1 0 512 0zM271 135c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-87 87 87 87c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L167 273c-9.4-9.4-9.4-24.6 0-33.9L271 135z"/></svg>             
-            </div>
-            <div className='btnRight'>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM241 377c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l87-87-87-87c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L345 239c9.4 9.4 9.4 24.6 0 33.9L241 377z"/></svg>    
-            </div>
+           
         </div>
     </div>
   )

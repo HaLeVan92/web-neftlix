@@ -1,8 +1,11 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import InputBase from '@mui/material/InputBase'
 import SearchIcon from '@mui/icons-material/Search';
+// import {useSearchParams} from "react-router-dom";
+import apiService from '../app/apiService';
+import { API_KEY } from '../app/config';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -46,7 +49,51 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
+
 export default function SearchMovies() {
+  // let [searchParams, setSearchParams] = useSearchParams();
+
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  //   setSearchParams(event.target);
+    
+  // }
+
+
+  const [movieSearch, setMovieSearch] = useState();
+
+  // const handleSearch = async (seachValue) => {
+  //     try {
+  //         const url = `https://api.themoviedb.org/3/search/movie?query=${seachValue}&include_adult=false&language=en-US&page=1`; 
+  //         const options = {
+  //             method: 'GET',
+  //             headers: {
+  //                 accept: 'application/json',
+  //                 Authorization: `Bearer &{import.meta.env.REACT_APP_API_KEY}`,
+                  
+  //             },              
+  //         }
+  //         const searchMovie = await fetch (url, options);
+  //         const data = await searchMovie.json();
+  //         console.log(data); 
+  //     } catch (error) {
+  //         console.log(error)
+  //     }
+  // }
+
+      useEffect(() => {
+        const fetchData = async () => {
+            const data = await apiService.get(`/search/movie?api_key=${API_KEY}`);
+            console.log(data);
+            setMovieSearch(data.data.results);
+        }
+        fetchData();
+    // eslint-disable-next-line    
+    }, [])
+
+
+
   return (
     <Box sx={{ flexGrow: 1, backgroundColor: 'white', borderRadius: 2 }}>
    

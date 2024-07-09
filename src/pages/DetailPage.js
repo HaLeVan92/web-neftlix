@@ -39,6 +39,7 @@ function DetailPage() {
           <Chip label={details?.vote_average} color="success" />
           </h3>
           <h3 className='overView'>Overview: {details?.overview}</h3>
+          <Chip className='Trailer' label="Trailer" color="primary" />
         </div>
         
       </div>
