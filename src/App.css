@@ -312,7 +312,7 @@ body {
   
 }
 
-.background {
+/* .background {
   width: 100%;
   height: 100%;
   z-index: 1;
@@ -320,8 +320,10 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  text-align: start; 
-}
+  text-align: start;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
 
 .detailInfo {
   padding-left: 50px;
@@ -388,10 +390,25 @@ body {
   width: 320px;
   height: 440px;
 }
-
+.detailImage {
+  width: 320px;
+  height: 440px;
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  .text-genres {
+    scale: 0.8;
+  }
+  .row {
+    scale: 0.8;
+  }
+  .btnVolume {
+    scale: 0.6;
+  }
+  .footer-content {
+    scale: 0.8;
+  }
   .navBar {
     scale: 0.7;
     width: 100%;
@@ -453,6 +470,7 @@ body {
   .background {
     width: 100%;
     height: 100%;
+ 
   }
 
    .detailInfo {
